@@ -1,2 +1,6 @@
 .app-container {
 }
+
+.filler {
+	flex-grow: 1;
+}
