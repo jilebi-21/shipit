@@ -1,7 +1,7 @@
-import { Input } from "reactstrap";
 import styled from "styled-components";
 import brandLogo from "./../logo.svg";
 import "./welcome.css";
+import background_img from "../resources/welcome-bg.png";
 
 type Props = {};
 
@@ -23,7 +23,7 @@ const NavBar = () => {
 };
 
 const SearchBarContainer = styled.div`
-	width: 600px;
+	max-width: 600px;
 	margin-top: 35px;
 
 	.input-style {
@@ -33,13 +33,11 @@ const SearchBarContainer = styled.div`
 		caret-color: #fc8019;
 		font-size: 18px;
 		font-weight: 500;
-		border-radius: 0;
 		border: 1px solid #bfbfc4;
 		flex-grow: 1;
 		outline: none;
 
 		&:focus {
-			outline: none;
 			border: 1px solid #fc8019;
 		}
 	}
@@ -80,9 +78,9 @@ const SearchBar = () => {
 
 const Header = styled.p`
 	margin: 0;
-	margin-top: 50px;
 	font-size: 40px;
 	font-weight: 600;
+	color: #fff;
 	letter-spacing: -0.45px;
 `;
 
@@ -90,30 +88,35 @@ const Subheader = styled.p`
 	font-size: 24px;
 	font-weight: 300;
 	letter-spacing: -0.3px;
-	color: #686b78;
+	color: #dedede;
 `;
 
 const CitiesContainer = styled.div`
 	h3 {
 		font-weight: 400;
 		font-size: 15px;
-		color: #a9abb2;
+		color: #dedede;
 		margin: 30px 0 10px;
 		letter-spacing: -0.2px;
 		text-transform: uppercase;
 	}
 	span {
 		display: inline-block;
-		color: #686b78;
+		color: #cdcdcd;
 		letter-spacing: -0.3px;
 		line-height: 1.5;
 		margin-right: 8px;
 		font-weight: 600;
 		font-size: 16px;
+		cursor: pointer;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
 	span:nth-child(2n) {
-		color: #93959f;
+		color: #ffffff;
 	}
 `;
 
@@ -143,17 +146,29 @@ const PopularCities = () => {
 
 const WelcomePage = (props: Props) => {
 	return (
-		<div className="welcome-section position-relative">
-			<div className="city-search-div">
+		<div className="welcome-header-bg">
+			<img
+				src={background_img}
+				className="high-res-image position-absolute"
+				alt=""
+				height={500}
+				role="presentation"
+			></img>
+			<div className="backdrop"></div>
+			<div className="welcome-section">
 				<NavBar />
-				<div>
-					<Header>Hungry?</Header>
-					<Subheader>
-						Order food from favourite restaurants near you.
-					</Subheader>
+				<div className="d-flex align-items-center justify-content-center header-section">
+					<div className="city-search-div">
+						<div>
+							<Header>Hungry?</Header>
+							<Subheader>
+								Order food from favourite restaurants near you.
+							</Subheader>
+						</div>
+						<SearchBar />
+						<PopularCities />
+					</div>
 				</div>
-				<SearchBar />
-				<PopularCities />
 			</div>
 		</div>
 	);
