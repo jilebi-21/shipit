@@ -1,5 +1,6 @@
 import brandLogo from "../../logo.svg";
 import bg_img from "../../resources/welcome-bg.png";
+import About from "./About";
 import "./welcome.scss";
 
 type Props = {};
@@ -62,26 +63,30 @@ const WelcomePage = (props: Props) => {
 	};
 
 	return (
-		<div className="welcome-header-bg">
-			<div>
-				<img src={bg_img} className="bg-image" alt=""></img>
-				<div className="backdrop"></div>
-			</div>
-			<div className="welcome--header-section">
-				<NavBar />
-				<div className="d-flex align-items-center justify-content-center">
-					<div className="welcome--header-content">
-						<div>
-							<p className="title text-light">Hungry?</p>
-							<p className="subtitle">
-								Order food from favourite restaurants near you.
-							</p>
+		<div>
+			<div className="welcome-header-bg">
+				<div>
+					<img src={bg_img} className="bg-image" alt=""></img>
+					<div className="backdrop"></div>
+				</div>
+				<div className="welcome--header-section">
+					<NavBar />
+					<div className="d-flex align-items-center justify-content-center">
+						<div className="welcome--header-content">
+							<div>
+								<p className="title text-light">Hungry?</p>
+								<p className="subtitle">
+									Order food from favourite restaurants near
+									you.
+								</p>
+							</div>
+							<SearchBar />
+							<PopularCities />
 						</div>
-						<SearchBar />
-						<PopularCities />
 					</div>
 				</div>
 			</div>
+			<About />
 		</div>
 	);
 };

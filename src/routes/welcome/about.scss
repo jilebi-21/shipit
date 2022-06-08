@@ -1,0 +1,27 @@
+.welcome--about-bg {
+	background-color: #2b1f16;
+}
+
+.welcome--about-item {
+	text-align: center;
+	margin: 40px 20px;
+
+	img {
+		height: 90px;
+		margin-bottom: 42px;
+	}
+
+	.title {
+		font-size: 20px;
+		font-weight: 600;
+		margin-top: 0;
+	}
+
+	.subtitle {
+		font-size: 15px;
+		width: 260px;
+		margin-top: 10px;
+		color: #e0cbc1;
+		line-height: 1.3;
+	}
+}
