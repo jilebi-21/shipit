@@ -1,5 +1,5 @@
-import brandLogo from "./../logo.svg";
-import bg_img from "../resources/welcome-bg.png";
+import brandLogo from "../../logo.svg";
+import bg_img from "../../resources/welcome-bg.png";
 import "./welcome.scss";
 
 type Props = {};

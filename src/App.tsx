@@ -1,5 +1,5 @@
 import "./App.scss";
-import WelcomePage from "./routes/Welcome";
+import WelcomePage from "./routes/welcome/Welcome";
 
 function App() {
 	return (
