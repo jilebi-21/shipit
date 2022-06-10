@@ -38,7 +38,7 @@ const About = () => {
 
 	return (
 		<div className="welcome--about-bg">
-			<div className="welcome--header-section d-flex justify-content-around">
+			<div className="welcome--header-section d-md-flex justify-content-md-around">
 				{aboutItems.map((item, idx) => {
 					return (
 						<div key={idx}>
