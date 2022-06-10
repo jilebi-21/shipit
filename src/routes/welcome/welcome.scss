@@ -68,6 +68,8 @@
 		font-size: 40px;
 		font-weight: 600;
 		letter-spacing: -0.45px;
+		position: relative;
+		// animation: fade-out infinite 200ms;
 	}
 
 	.subtitle {
@@ -143,5 +145,20 @@
 
 	span:nth-child(2n) {
 		color: #ffffff;
+	}
+}
+
+.fadeIn {
+	animation: fade-in 250ms;
+}
+
+@keyframes fade-in {
+	0% {
+		top: 50%;
+		opacity: 0;
+	}
+	100% {
+		top: 0;
+		opacity: 1;
 	}
 }

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import brandLogo from "../../logo.svg";
 import bg_img from "../../resources/welcome-bg.png";
 import About from "./About";
@@ -6,6 +7,32 @@ import "./welcome.scss";
 type Props = {};
 
 const WelcomePage = (props: Props) => {
+	const titles = [
+		"Hungry?",
+		"Unexpected guests?",
+		"Coocking gone wrong?",
+		"Movie marathon?",
+		"Game night?",
+		"Late night at office?",
+	];
+
+	const [titlePos, setTitlePos] = useState<number>(0);
+	const [title, setTitle] = useState<string>(titles[titlePos]);
+
+	(function () {
+		setTimeout(() => {
+			setTitlePos((titlePos + 1) % titles.length);
+		}, 4000);
+	})();
+
+	useEffect(() => {
+		setTitle(titles[titlePos]);
+		document.getElementById("title")?.classList.add("fadeIn");
+		setTimeout(() => {
+			document.querySelector("#title")?.classList.remove("fadeIn");
+		}, 250);
+	}, [titlePos]);
+
 	const NavBar = () => {
 		return (
 			<div className="d-flex welcome--nav-container">
@@ -74,7 +101,9 @@ const WelcomePage = (props: Props) => {
 					<div className="d-flex align-items-center justify-content-center">
 						<div className="welcome--header-content">
 							<div>
-								<p className="title text-light">Hungry?</p>
+								<p className="title text-light" id="title">
+									{titles[titlePos]}
+								</p>
 								<p className="subtitle">
 									Order food from favourite restaurants near
 									you.
