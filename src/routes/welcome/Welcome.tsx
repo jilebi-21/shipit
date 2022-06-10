@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import brandLogo from "../../logo.svg";
 import bg_img from "../../resources/welcome-bg.png";
 import About from "./About";
+import RegistrationSection from "./RegistrationSection";
 import "./welcome.scss";
 
 type Props = {};
@@ -116,6 +117,7 @@ const WelcomePage = (props: Props) => {
 				</div>
 			</div>
 			<About />
+			<RegistrationSection />
 		</div>
 	);
 };
