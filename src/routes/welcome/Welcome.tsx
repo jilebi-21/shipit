@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import brandLogo from "../../logo.svg";
 import bg_img from "../../resources/welcome-bg.png";
+import { Paths } from "../Utils";
 import About from "./About";
 import DownloadSection from "./DownloadSection";
 import RegistrationSection from "./RegistrationSection";
@@ -53,6 +55,11 @@ const WelcomePage = (props: Props) => {
 	};
 
 	const SearchBar = () => {
+		const navigate = useNavigate();
+		const searchRestaurant = () => {
+			navigate(Paths.HOME);
+		};
+
 		return (
 			<div className="welcome--header-search-container d-flex">
 				<input
@@ -60,9 +67,9 @@ const WelcomePage = (props: Props) => {
 					className="input-style"
 					placeholder="Enter your delivery location"
 				/>
-				<a href="#" className="search-btn">
+				<button className="search-btn" onClick={searchRestaurant}>
 					FIND FOOD
-				</a>
+				</button>
 			</div>
 		);
 	};
