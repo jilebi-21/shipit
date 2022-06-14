@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Appbar from "../../components/Appbar";
 import { RestaurantBase } from "../../models/RestaurantBase";
 import { API } from "../Utils";
@@ -12,14 +12,16 @@ const Home = () => {
 		setRestaurants(res.response);
 	};
 
-	fetchRestaurants();
+	useEffect(() => {
+		fetchRestaurants();
+	}, []);
 
 	return (
 		<div>
 			<Appbar />
 
 			{restaurantsList.map((item, idx) => {
-				return <div>{item.res_name}</div>;
+				return <div key={idx}>{item.res_name}</div>;
 			})}
 		</div>
 	);
