@@ -112,7 +112,7 @@ const RestuarantCard = ({ info }: Props) => {
 				<InfoContainer>
 					<div className={`rating ${ratingClass}`}>
 						<StarIcon />
-						<span>{info.res_rating}</span>
+						<span>{info.res_rating.toFixed(1)}</span>
 					</div>
 					<div>•</div>
 					<div>{info.res_deliveryTime} MINS</div>
