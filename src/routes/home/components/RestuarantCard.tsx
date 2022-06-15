@@ -62,8 +62,8 @@ const InfoContainer = styled.div`
 		color: #fff;
 		display: flex;
 		align-items: center;
-		padding: 1px 4px;
-		width: 37px;
+		padding: 1px 6px;
+		min-width: 37px;
 		height: 20px;
 		font-size: 11px;
 
