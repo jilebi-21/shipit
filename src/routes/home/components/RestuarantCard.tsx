@@ -85,6 +85,7 @@ const InfoContainer = styled.div`
 const RestaurantImage = styled.img`
 	height: 80px;
 	aspect-ratio: 127/80;
+	object-fit: cover;
 	@media (min-width: ${bp}px) {
 		height: 160px;
 	}
