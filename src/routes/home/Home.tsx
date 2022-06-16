@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import Appbar from "../../components/Appbar";
 import { RestaurantBase } from "../../models/RestaurantBase";
 import { API } from "../Utils";
+import { RestaurantBaseComparators } from "../utils/RestaurantsBaseComparators";
 import RestuarantCard from "./components/RestuarantCard";
 
 const Container = styled.div`
@@ -18,10 +19,16 @@ const RestaurantCountContainer = styled.div`
 	top: 0;
 	background-color: #fff;
 
+	.wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
 	.title {
 		font-weight: 600;
 		font-size: 28px;
-		flex: 1;
+		display: inline-block;
 	}
 
 	.divider {
@@ -54,7 +61,7 @@ const RestaurantsContainer = styled.div`
 
 const Home = () => {
 	const [restaurantsList, setRestaurants] = useState<RestaurantBase[]>([]);
-
+	const [isAscending, setToAscending] = useState(true);
 	const fetchRestaurants = async () => {
 		const response = await fetch(API.RESTAURANTS);
 		const res = await response.json();
@@ -65,14 +72,53 @@ const Home = () => {
 		fetchRestaurants();
 	}, []);
 
+	const sortOptions = ["Cost", "Delivery Time", "Rating"];
+
+	const handleSpinnerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		const comparator = RestaurantBaseComparators(
+			restaurantsList,
+			isAscending
+		);
+		let list = restaurantsList;
+		switch (e.target.value) {
+			case sortOptions[0]:
+				list = comparator.sortByCost();
+				break;
+			case sortOptions[1]:
+				list = comparator.sortByDeliveryTime();
+				break;
+			case sortOptions[2]:
+				list = comparator.sortByRating();
+				break;
+		}
+
+		setRestaurants(list);
+	};
+
 	return (
 		<div>
 			<Appbar />
-			<div></div>
 			<Container>
 				<RestaurantCountContainer>
-					<div className="title">
-						{restaurantsList.length} Restaurants
+					<div className="wrapper">
+						<div className="title">
+							{restaurantsList.length} Restaurants
+						</div>
+						<div>
+							<select onChange={handleSpinnerChange}>
+								{sortOptions.map((item, idx) => {
+									return <option>{item}</option>;
+								})}
+							</select>
+							<button
+								onClick={() => {
+									setToAscending(!isAscending);
+									restaurantsList.reverse();
+								}}
+							>
+								Flip
+							</button>
+						</div>
 					</div>
 					<div className="divider"></div>
 				</RestaurantCountContainer>
